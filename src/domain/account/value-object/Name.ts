@@ -9,8 +9,7 @@ export default class Name {
   }
 
   private ensureIsValid (value: string): void {
-    const isValid = value.match(/[a-zA-Z] [a-zA-Z]+/)
-    if (isValid === null) {
+    if (value.match(/[a-zA-Z] [a-zA-Z]+/) === null) {
       throw NameError.invalid(value)
     }
   }

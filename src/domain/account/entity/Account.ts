@@ -1,12 +1,16 @@
 import Uuid from '@/domain/shared/value-object/Uuid'
+import Name from '@/domain/account/value-object/Name'
+import Email from '@/domain/account/value-object/Email'
+import Cpf from '@/domain/account/value-object/Cpf'
+import CarPlate from '@/domain/account/value-object/CarPlate'
 
 export default class Account {
   private constructor (
     readonly accountId: Uuid,
-    private name: string,
-    private email: string,
-    private cpf: string,
-    private carPlate: string,
+    private name: Name,
+    private email: Email,
+    private cpf: Cpf,
+    private carPlate: CarPlate,
     readonly isPassenger: boolean,
     readonly isDriver: boolean,
     readonly createdAt: Date,
@@ -24,7 +28,17 @@ export default class Account {
   ): Account {
     const accountId: Uuid = Uuid.random()
     const createdAt: Date = new Date()
-    return new Account(accountId, name, email, cpf, carPlate, isPassenger, isDriver, createdAt, createdAt)
+    return new Account(
+      accountId,
+      new Name(name),
+      new Email(email),
+      new Cpf(cpf),
+      new CarPlate(carPlate),
+      isPassenger,
+      isDriver,
+      createdAt,
+      createdAt
+    )
   }
 
   static restore (
@@ -40,10 +54,10 @@ export default class Account {
   ): Account {
     return new Account(
       new Uuid(accountId),
-      name,
-      email,
-      cpf,
-      carPlate,
+      new Name(name),
+      new Email(email),
+      new Cpf(cpf),
+      new CarPlate(carPlate),
       isPassenger,
       isDriver,
       new Date(createdAt),
@@ -56,19 +70,19 @@ export default class Account {
   }
 
   getName (): string {
-    return this.name
+    return this.name.value
   }
 
   getEmail (): string {
-    return this.email
+    return this.email.value
   }
 
   getCpf (): string {
-    return this.cpf
+    return this.cpf.value
   }
 
   getCarPlate (): string {
-    return this.carPlate
+    return this.carPlate.value
   }
 
   getCreatedAt (): string {
@@ -80,22 +94,22 @@ export default class Account {
   }
 
   changeName (name: string): void {
-    this.name = name
+    this.name = new Name(name)
     this.updatedAt = new Date()
   }
 
   changeEmail (email: string): void {
-    this.email = email
+    this.email = new Email(email)
     this.updatedAt = new Date()
   }
 
   changeCpf (cpf: string): void {
-    this.cpf = cpf
+    this.cpf = new Cpf(cpf)
     this.updatedAt = new Date()
   }
 
   changeCarPlate (carPlate: string): void {
-    this.carPlate = carPlate
+    this.carPlate = new CarPlate(carPlate)
     this.updatedAt = new Date()
   }
 }
