@@ -2,7 +2,10 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "extends": "love"
+  "extends": "love",
+  "rules": {
+    "@typescript-eslint/no-extraneous-class": "off"
+  }
 }
 
 
