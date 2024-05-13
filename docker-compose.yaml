@@ -1,6 +1,19 @@
 version: '3.8'
 
 services:
+  app:
+    container_name: app
+    build: .
+    restart: always
+#    command: bash -c "npm install --only=prod && npm run debug"
+#    command: bash -c "npm install --omit=dev"
+    volumes:
+      - .:/home/node/app
+    ports:
+      - "3000:3000"
+    networks:
+      - cccat_16_node
+
   postgres:
     build:
       context: ./.docker/postgres
@@ -15,3 +28,9 @@ services:
     volumes:
       - ./.docker/postgres/data:/var/lib/postgresql/data
       - ./.docker/postgres/scripts/:/docker-entrypoint-initdb.d/
+    networks:
+      - cccat_16_node
+
+networks:
+  cccat_16_node:
+    driver: bridge
