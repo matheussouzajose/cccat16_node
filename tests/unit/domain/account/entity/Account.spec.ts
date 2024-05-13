@@ -1,7 +1,7 @@
 import Account from '@/domain/account/entity/Account'
 
-describe('Account Entity', function () {
-  test('Should create an passenger account', function () {
+describe('Account Entity', () => {
+  test('Should create an passenger account', () => {
     const account: Account = Account.create(
       'John Doe',
       'john.doe@email.com',
@@ -10,9 +10,9 @@ describe('Account Entity', function () {
       true,
       false
     )
-    expect(account.accountId).toBeDefined()
-    expect(account.createdAt).toBeDefined()
-    expect(account.updatedAt).toBeDefined()
+    expect(account.getAccountId()).toBeDefined()
+    expect(account.getCreatedAt()).toBeDefined()
+    expect(account.getUpdateAt()).toBeDefined()
     expect(account.getName()).toBe('John Doe')
     expect(account.getEmail()).toBe('john.doe@email.com')
     expect(account.getCpf()).toBe('25428860081')
@@ -21,7 +21,7 @@ describe('Account Entity', function () {
     expect(account.isDriver).toBeFalsy()
   })
 
-  test('Should create an driver account', function () {
+  test('Should create an driver account', () => {
     const account: Account = Account.create(
       'John Doe',
       'john.doe@email.com',
@@ -30,9 +30,9 @@ describe('Account Entity', function () {
       false,
       true
     )
-    expect(account.accountId).toBeDefined()
-    expect(account.createdAt).toBeDefined()
-    expect(account.updatedAt).toBeDefined()
+    expect(account.getAccountId()).toBeDefined()
+    expect(account.getCreatedAt()).toBeDefined()
+    expect(account.getUpdateAt()).toBeDefined()
     expect(account.getName()).toBe('John Doe')
     expect(account.getEmail()).toBe('john.doe@email.com')
     expect(account.getCpf()).toBe('25428860081')
@@ -41,7 +41,7 @@ describe('Account Entity', function () {
     expect(account.isDriver).toBeTruthy()
   })
 
-  test('Should restore an account', function () {
+  test('Should restore an account', () => {
     const account: Account = Account.create(
       'John Doe',
       'john.doe@email.com',
@@ -50,9 +50,9 @@ describe('Account Entity', function () {
       false,
       true
     )
-    expect(account.accountId).toBeDefined()
-    expect(account.createdAt).toBeDefined()
-    expect(account.updatedAt).toBeDefined()
+    expect(account.getAccountId()).toBeDefined()
+    expect(account.getCreatedAt()).toBeDefined()
+    expect(account.getUpdateAt()).toBeDefined()
     expect(account.getName()).toBe('John Doe')
     expect(account.getEmail()).toBe('john.doe@email.com')
     expect(account.getCpf()).toBe('25428860081')
@@ -61,7 +61,7 @@ describe('Account Entity', function () {
     expect(account.isDriver).toBeTruthy()
   })
 
-  test('Should change values', function () {
+  test('Should change values', () => {
     const account: Account = Account.create(
       'John Doe',
       'john.doe@email.com',
