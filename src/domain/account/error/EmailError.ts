@@ -7,4 +7,8 @@ export class EmailError extends Error {
   static invalid (value: string): EmailError {
     return new EmailError(`The email ${value} is invalid.`)
   }
+
+  static alreadyExists (value: string): EmailError {
+    return new EmailError(`The email ${value} already exists.`)
+  }
 }

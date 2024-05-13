@@ -86,11 +86,11 @@ export default class Account {
   }
 
   getCreatedAt (): string {
-    return this.createdAt.toLocaleDateString('pt-br')
+    return this.createdAt.toLocaleDateString()
   }
 
   getUpdateAt (): string {
-    return this.updatedAt.toLocaleDateString('pt-br')
+    return this.updatedAt.toLocaleDateString()
   }
 
   changeName (name: string): void {
