@@ -23,7 +23,7 @@ export default class AddAccountUseCase {
     await this.accountRepository.saveAccount(account)
     await this.mailerGateway.send(account.getEmail(), 'Welcome', `Welcome, ${account.getName()}!`)
     return {
-      accountId: 'accountId'
+      accountId: account.getAccountId()
     }
   }
 }
