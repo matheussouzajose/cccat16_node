@@ -1,4 +1,4 @@
-import type MailerGateway from '@/infrastructure/gateway/MailerGateway'
+import type MailerGateway from '@/application/protocols/gateway/MailerGateway'
 
 export default class MailerGatewayStub implements MailerGateway {
   recipient: string | undefined

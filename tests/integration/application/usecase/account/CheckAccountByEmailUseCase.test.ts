@@ -2,18 +2,21 @@ import { connectDbTesting, disconnectDbTesting } from '@/tests/setup-db-testing'
 import GetAccountByIdUseCase, { type GetAccountById } from '@/application/usecase/account/GetAccountByIdUseCase'
 import PgPromiseAdapter from '@/infrastructure/database/PgPromiseAdapter'
 import DbAccountRepository from '@/infrastructure/persistence/repository/account/DbAccountRepository'
+import { AccountError } from '@/domain/account/error/AccountError'
 import AddAccountUseCase, { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAccountUseCase'
 import MailerGatewayStub from '@/tests/stubs/MailerGatewayStub'
 import { mockAccountPassenger } from '@/tests/mocks/MockAccount'
+import * as faker from 'faker'
+import CheckAccountByEmailUseCase from '@/application/usecase/account/CheckAccountByEmailUseCase'
 
-describe('Get Account UseCase', () => {
-  let getAccountUseCase: GetAccountByIdUseCase
+describe('Check Account By Email', () => {
+  let checkAccountByEmailUseCase: CheckAccountByEmailUseCase
   let addAccountUseCase: AddAccountUseCase
 
   beforeAll(() => {
     const pgPromiseAdapter = new PgPromiseAdapter()
     const accountRepository = new DbAccountRepository(pgPromiseAdapter)
-    getAccountUseCase = new GetAccountByIdUseCase(accountRepository)
+    checkAccountByEmailUseCase = new CheckAccountByEmailUseCase(accountRepository)
     addAccountUseCase = new AddAccountUseCase(accountRepository, new MailerGatewayStub())
   })
 
@@ -25,16 +28,15 @@ describe('Get Account UseCase', () => {
     await disconnectDbTesting()
   })
 
+  test('Should return false when email no exists', async function (): Promise<void> {
+    const output: boolean = await checkAccountByEmailUseCase.execute('jonh.doe@email.com')
+    expect(output).toBeFalsy()
+  })
+
   test('Should return account', async function (): Promise<void> {
     const input: AddAccountUseCaseDto.Input = mockAccountPassenger()
-    const { accountId } = await addAccountUseCase.execute(input)
-    const output: GetAccountById.Output | null = await getAccountUseCase.execute(accountId)
-    expect(output?.accountId).toBe(accountId)
-    expect(output?.name).toBe(input.name)
-    expect(output?.email).toBe(input.email)
-    expect(output?.cpf).toBe(input.cpf)
-    expect(output?.isPassenger).toBe(input.isPassenger)
-    expect(output?.carPlate).toBe('')
-    expect(output?.isDriver).toBeFalsy()
+    await addAccountUseCase.execute(input)
+    const output: boolean = await checkAccountByEmailUseCase.execute(input.email)
+    expect(output).toBeTruthy()
   })
 })

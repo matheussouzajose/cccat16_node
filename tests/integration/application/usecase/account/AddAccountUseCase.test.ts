@@ -1,8 +1,7 @@
 import { connectDbTesting, disconnectDbTesting } from '@/tests/setup-db-testing'
-import AddAccountUseCase, { type AddAccountDto } from '@/application/usecase/account/AddAccountUseCase'
+import AddAccountUseCase, { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAccountUseCase'
 import DbAccountRepository from '@/infrastructure/persistence/repository/account/DbAccountRepository'
 import PgPromiseAdapter from '@/infrastructure/database/PgPromiseAdapter'
-import { EmailError } from '@/domain/account/error/EmailError'
 import { mockAccountPassenger } from '@/tests/mocks/MockAccount'
 import MailerGatewayStub from '@/tests/stubs/MailerGatewayStub'
 
@@ -22,16 +21,9 @@ describe('Add Account UseCase', () => {
   afterEach(async (): Promise<void> => { await disconnectDbTesting() })
 
   test('Should be create an passenger account', async () => {
-    const input: AddAccountDto.Input = mockAccountPassenger()
-    const output: AddAccountDto.Output = await addAccountUseCase.execute(input)
+    const input: AddAccountUseCaseDto.Input = mockAccountPassenger()
+    const output: AddAccountUseCaseDto.Output = await addAccountUseCase.execute(input)
     expect(mailerGateway.recipient).toBe(input.email)
     expect(output.accountId).toBeDefined()
-  })
-
-  test('Should throw if email already exist', async function (): Promise<void> {
-    const input: AddAccountDto.Input = mockAccountPassenger()
-    await addAccountUseCase.execute(input)
-    await expect(async (): Promise<AddAccountDto.Output> => await addAccountUseCase.execute(input))
-      .rejects.toThrow(EmailError.alreadyExists(input.email))
   })
 })

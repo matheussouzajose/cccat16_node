@@ -6,11 +6,9 @@ export default class GetAccountByIdUseCase {
   constructor (private readonly accountRepository: AccountRepository) {
   }
 
-  async execute (id: string): Promise<GetAccountById.Output> {
+  async execute (id: string): Promise<GetAccountById.Output | null> {
     const account: Account | null = await this.accountRepository.getAccountById(id)
-    if (!account) {
-      throw AccountError.notFound(id)
-    }
+    if (!account) return null
     return {
       accountId: account.getAccountId(),
       name: account.getName(),

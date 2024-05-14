@@ -1,17 +1,12 @@
 import type AccountRepository from '@/domain/account/repository/AccountRepository'
 import Account from '@/domain/account/entity/Account'
-import { EmailError } from '@/domain/account/error/EmailError'
-import type MailerGateway from '@/infrastructure/gateway/MailerGateway'
+import type MailerGateway from '@/application/protocols/gateway/MailerGateway'
 
 export default class AddAccountUseCase {
   constructor (private readonly accountRepository: AccountRepository, private readonly mailerGateway: MailerGateway) {
   }
 
-  async execute (input: AddAccountDto.Input): Promise<AddAccountDto.Output> {
-    const existing: Account | null = await this.accountRepository.getAccountByEmail(input.email)
-    if (existing) {
-      throw EmailError.alreadyExists(input.email)
-    }
+  async execute (input: AddAccountUseCaseDto.Input): Promise<AddAccountUseCaseDto.Output> {
     const account: Account = Account.create(
       input.name,
       input.email,
@@ -28,7 +23,7 @@ export default class AddAccountUseCase {
   }
 }
 
-export namespace AddAccountDto {
+export namespace AddAccountUseCaseDto {
   export type Input = {
     name: string
     email: string
