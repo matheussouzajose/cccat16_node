@@ -10,8 +10,8 @@
     "test:staged": "npm test -- --findRelatedTests",
     "test:ci": "npm test -- --coverage",
     "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info",
-    "lint": "eslint src/**/*.ts",
-    "lint:fix": "eslint src/**/*.ts --fix"
+    "lint": "eslint src/**/*.ts && eslint tests/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix && eslint tests/**/*.ts --fix"
   },
   "keywords": [],
   "author": "",

@@ -1,6 +1,5 @@
 import type AccountRepository from '@/domain/account/repository/AccountRepository'
 import type Account from '@/domain/account/entity/Account'
-import { AccountError } from '@/domain/account/error/AccountError'
 
 export default class GetAccountByIdUseCase {
   constructor (private readonly accountRepository: AccountRepository) {

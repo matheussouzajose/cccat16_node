@@ -1,7 +1,7 @@
 export class EmailError extends Error {
   private constructor (message: string) {
     super(message)
-    this.name = 'EmailError'
+    // this.name = 'EmailError'
   }
 
   static invalid (value: string): EmailError {
