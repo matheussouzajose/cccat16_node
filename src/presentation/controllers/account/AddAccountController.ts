@@ -3,8 +3,7 @@ import { type HttpResponse } from '@/presentation/controllers/protocols/HttpResp
 import { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAccountUseCase'
 import type AddAccountUseCase from '@/application/usecase/account/AddAccountUseCase'
 import type CheckAccountByEmailUseCase from '@/application/usecase/account/CheckAccountByEmailUseCase'
-import { badRequest, created, serverError, unprocessable } from '@/presentation/helpers/http-helper'
-import { EmailError } from '@/domain/account/error/EmailError'
+import { created, serverError, unprocessable } from '@/presentation/helpers/http-helper'
 import { type Validation } from '@/presentation/controllers/protocols/Validation'
 
 export default class AddAccountController implements Controller {
