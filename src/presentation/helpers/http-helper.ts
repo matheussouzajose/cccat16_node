@@ -16,12 +16,12 @@ export const noContent = (): HttpResponse => ({
   body: null
 })
 
-export const badRequest = (error: Error): HttpResponse => ({
+export const badRequest = (error: object): HttpResponse => ({
   statusCode: 400,
   body: error
 })
 
-export const unprocessable = (error: Error): HttpResponse => ({
+export const unprocessable = (error: object): HttpResponse => ({
   statusCode: 422,
   body: error
 })
@@ -38,5 +38,5 @@ export const forbidden = (error: Error): HttpResponse => ({
 //
 export const serverError = (error: Error): HttpResponse => ({
   statusCode: 500,
-  body: new ServerError(error.stack)
+  body: ServerError.internalError(error.stack)
 })
