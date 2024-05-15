@@ -1,7 +1,11 @@
 export interface Validation {
-  validate: (input: ValidationDto.Input) => Record<string, string[]> | undefined
+  validate: (input: ValidationDto.Input) => ValidationDto.Output | undefined
 }
 
 export namespace ValidationDto {
   export type Input = Record<string, any>
+  export type Output = {
+    message: string
+    errors: object
+  }
 }

@@ -7,6 +7,10 @@ services:
     restart: always
 #    command: bash -c "npm install --only=prod && npm run debug"
 #    command: bash -c "npm install --omit=dev"
+    environment:
+      ABC: text
+    env_file:
+      - .env
     volumes:
       - .:/home/node/app
     ports:

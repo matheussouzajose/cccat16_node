@@ -1,7 +1,10 @@
-export class CarPlateError extends Error {
+import DomainError from '@/domain/account/error/DomainError'
+
+export class CarPlateError extends DomainError {
   private constructor (message: string) {
     super(message)
-    this.name = 'CarPlateError'
+    this.name = 'carPlate'
+    this.stack = message
   }
 
   static invalid (value: string): CarPlateError {

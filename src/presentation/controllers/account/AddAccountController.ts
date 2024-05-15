@@ -4,7 +4,8 @@ import { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAcco
 import type AddAccountUseCase from '@/application/usecase/account/AddAccountUseCase'
 import type CheckAccountByEmailUseCase from '@/application/usecase/account/CheckAccountByEmailUseCase'
 import { created, serverError, unprocessable } from '@/presentation/helpers/http-helper'
-import { type Validation } from '@/presentation/controllers/protocols/Validation'
+import { type Validation, type ValidationDto } from '@/presentation/controllers/protocols/Validation'
+import DomainError from '@/domain/account/error/DomainError'
 
 export default class AddAccountController implements Controller {
   constructor (
@@ -16,7 +17,7 @@ export default class AddAccountController implements Controller {
 
   async handle (request: AddAccountControllerDto.Input): Promise<HttpResponse> {
     try {
-      const error: Record<string, string[]> | undefined = this.validation.validate(request)
+      const error: ValidationDto.Output | undefined = this.validation.validate(request)
       if (error) {
         return unprocessable(error)
       }
@@ -28,6 +29,9 @@ export default class AddAccountController implements Controller {
       return created(output)
     } catch (e) {
       const error: Error = (e as Error)
+      if (error instanceof DomainError) {
+        return unprocessable(error.output())
+      }
       return serverError(error)
     }
   }

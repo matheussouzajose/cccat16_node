@@ -1,7 +1,10 @@
-export class CpfError extends Error {
+import DomainError from '@/domain/account/error/DomainError'
+
+export class CpfError extends DomainError {
   private constructor (message: string) {
     super(message)
-    this.name = 'CpfError'
+    this.name = 'cpf'
+    this.stack = message
   }
 
   static invalid (value: string): CpfError {

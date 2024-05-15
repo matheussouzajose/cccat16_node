@@ -1,4 +1,4 @@
-import {type Validation, type ValidationDto} from '@/presentation/controllers/protocols/Validation'
+import { type Validation, type ValidationDto } from '@/presentation/controllers/protocols/Validation'
 import { type EmailValidator } from '@/presentation/validation/protocols/EmailValidator'
 
 export class EmailValidation implements Validation {
@@ -7,10 +7,16 @@ export class EmailValidation implements Validation {
     private readonly emailValidator: EmailValidator
   ) {}
 
-  validate (input: ValidationDto.Input): Record<string, string[]> | undefined {
+  validate (input: ValidationDto.Input): ValidationDto.Output | undefined {
     const isValid: boolean = this.emailValidator.isValid(input[this.fieldName])
     if (!isValid) {
-      return { [this.fieldName]: ['this is invalid email.'] }
+      const message: string = `The ${this.fieldName} must be a valid email address.`
+      return {
+        message,
+        errors: {
+          [this.fieldName]: message
+        }
+      }
     }
   }
 }
