@@ -1,4 +1,4 @@
-import ExpressServerAdapter from '@/infrastructure/http/adapters/ExpressServerAdapter'
+import ExpressServerAdapter from '@/infrastructure/http/adapters/express/ExpressServerAdapter'
 import App from '@/main/config/App'
 import PgPromiseAdapter from '@/infrastructure/database/PgPromiseAdapter'
 import * as dotenv from 'dotenv'

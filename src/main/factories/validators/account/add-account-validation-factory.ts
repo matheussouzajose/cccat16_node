@@ -1,5 +1,5 @@
 import { ValidationComposite } from '@/presentation/validation/validators/ValidationComposite'
-import { type Validation } from '@/presentation/controllers/protocols/Validation'
+import type { Validation } from '@/presentation/controllers/protocols/Validation'
 import { RequiredFieldValidation } from '@/presentation/validation/validators/RequiredFieldValidation'
 import { EmailValidation } from '@/presentation/validation/validators/EmailValidation'
 import { EmailValidatorAdapter } from '@/infrastructure/validator/EmailValidatorAdapter'
