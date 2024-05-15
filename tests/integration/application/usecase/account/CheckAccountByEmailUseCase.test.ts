@@ -1,12 +1,9 @@
 import { connectDbTesting, disconnectDbTesting } from '@/tests/setup-db-testing'
-import GetAccountByIdUseCase, { type GetAccountById } from '@/application/usecase/account/GetAccountByIdUseCase'
 import PgPromiseAdapter from '@/infrastructure/database/PgPromiseAdapter'
 import DbAccountRepository from '@/infrastructure/persistence/repository/account/DbAccountRepository'
-import { AccountError } from '@/domain/account/error/AccountError'
 import AddAccountUseCase, { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAccountUseCase'
 import MailerGatewayStub from '@/tests/stubs/MailerGatewayStub'
 import { mockAccountPassenger } from '@/tests/mocks/MockAccount'
-import * as faker from 'faker'
 import CheckAccountByEmailUseCase from '@/application/usecase/account/CheckAccountByEmailUseCase'
 
 describe('Check Account By Email', () => {

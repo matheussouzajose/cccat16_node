@@ -5,13 +5,15 @@ services:
     container_name: app
     build: .
     restart: always
-    command: bash -c "npm install --omit=dev  && npm run debug"
+    command: bash -c "yarn install --only=prod && npm run debug"
     environment:
       ABC: text
     env_file:
       - .env
     volumes:
       - .:/home/node/app
+      - ./dist/:/home/node/app/dist
+#      - ./package.json:/home/node/app/package.json
     ports:
       - "3000:3000"
     networks:
