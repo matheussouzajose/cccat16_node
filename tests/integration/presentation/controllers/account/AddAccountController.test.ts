@@ -8,7 +8,7 @@ import CheckAccountByEmailUseCase from '@/application/usecase/account/CheckAccou
 import { type HttpResponse } from '@/presentation/controllers/protocols/HttpResponse'
 import { serverError } from '@/presentation/helpers/http-helper'
 import { NameError } from '@/domain/account/error/NameError'
-import { makeAddAccountValidation } from '@/presentation/validation/validators/account/AddAccountValidation'
+import { makeAddAccountValidation } from '@/main/factories/validators/account/add-account-validation-factory'
 
 describe('Add Account Controller', () => {
   let addAccountController: AddAccountController
@@ -19,8 +19,7 @@ describe('Add Account Controller', () => {
     const checkAccountByEmailUseCase = new CheckAccountByEmailUseCase(accountRepository)
     const mailerGatewayConsole = new MailerGatewayConsole()
     const addAccountUseCase = new AddAccountUseCase(accountRepository, mailerGatewayConsole)
-    const addAccountValidation = makeAddAccountValidation()
-    addAccountController = new AddAccountController(checkAccountByEmailUseCase, addAccountUseCase, addAccountValidation)
+    addAccountController = new AddAccountController(checkAccountByEmailUseCase, addAccountUseCase, makeAddAccountValidation())
   })
 
   beforeEach(async (): Promise<void> => { await connectDbTesting() })
