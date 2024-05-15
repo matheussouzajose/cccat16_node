@@ -16,6 +16,9 @@ export default class AddAccountController implements Controller {
   }
 
   async handle (request: AddAccountControllerDto.Input): Promise<HttpResponse> {
+    if (request.name) {
+      throw new Error('dasdas')
+    }
     try {
       const error: ValidationDto.Output | undefined = this.validation.validate(request)
       if (error) {

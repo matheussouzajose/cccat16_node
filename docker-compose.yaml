@@ -12,8 +12,6 @@ services:
       - .env
     volumes:
       - .:/home/node/app
-      - ./dist/:/home/node/app/dist
-#      - ./package.json:/home/node/app/package.json
     ports:
       - "3000:3000"
     networks:
