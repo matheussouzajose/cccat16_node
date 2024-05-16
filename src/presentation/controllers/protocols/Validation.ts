@@ -4,8 +4,5 @@ export interface Validation {
 
 export namespace ValidationDto {
   export type Input = Record<string, any>
-  export type Output = {
-    message: string
-    errors: object
-  }
+  export type Output = { detail: string, pointer: string }
 }

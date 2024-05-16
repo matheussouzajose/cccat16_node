@@ -1,13 +1,22 @@
-import DomainError from '@/domain/account/error/DomainError'
+import BaseError from '@/domain/shared/error/BaseError'
 
-export class CarPlateError extends DomainError {
-  private constructor (message: string) {
-    super(message)
-    this.name = 'carPlate'
-    this.stack = message
+export class CarPlateError extends BaseError {
+  private constructor (detail: string, statusCode: number = 422) {
+    super({
+      title: 'Invalid Car Plate.',
+      statusCode,
+      detail
+    })
   }
 
   static invalid (value: string): CarPlateError {
     return new CarPlateError(`The car plate ${value} is invalid.`)
+  }
+
+  output (): any {
+    return {
+      title: this.message,
+      detail: this.detail
+    }
   }
 }

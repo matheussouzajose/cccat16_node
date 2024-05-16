@@ -5,12 +5,9 @@ export class RequiredFieldValidation implements Validation {
 
   validate (input: ValidationDto.Input): ValidationDto.Output | undefined {
     if (!input[this.fieldName]) {
-      const message: string = `The ${this.fieldName} field is required.`
       return {
-        message,
-        errors: {
-          [this.fieldName]: message
-        }
+        detail: 'The field is required.',
+        pointer: this.fieldName
       }
     }
   }

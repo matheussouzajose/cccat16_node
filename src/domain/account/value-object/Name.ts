@@ -10,7 +10,7 @@ export default class Name {
 
   private ensureIsValid (value: string): void {
     if (value.match(/[a-zA-Z] [a-zA-Z]+/) === null) {
-      throw NameError.invalid(value)
+      throw NameError.invalid()
     }
   }
 }

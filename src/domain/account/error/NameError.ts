@@ -1,13 +1,22 @@
-import DomainError from '@/domain/account/error/DomainError'
+import BaseError from '@/domain/shared/error/BaseError'
 
-export class NameError extends DomainError {
-  private constructor (message: string) {
-    super(message)
-    this.name = 'name'
-    this.stack = message
+export class NameError extends BaseError {
+  private constructor (detail: string, statusCode: number = 422) {
+    super({
+      title: 'Invalid Name.',
+      statusCode,
+      detail
+    })
   }
 
-  static invalid (value: string): NameError {
-    return new NameError(`The name ${value} is invalid. Name should be compost.`)
+  static invalid (): NameError {
+    return new NameError('Must have first and last name')
+  }
+
+  output (): any {
+    return {
+      title: this.message,
+      detail: this.detail
+    }
   }
 }

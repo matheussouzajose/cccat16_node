@@ -1,11 +1,11 @@
 import { type Controller } from '@/presentation/controllers/protocols/Controller'
 import { type HttpResponse } from '@/presentation/controllers/protocols/HttpResponse'
-import { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAccountUseCase'
 import type AddAccountUseCase from '@/application/usecase/account/AddAccountUseCase'
+import { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAccountUseCase'
 import type CheckAccountByEmailUseCase from '@/application/usecase/account/CheckAccountByEmailUseCase'
-import { created, serverError, unprocessable } from '@/presentation/helpers/http-helper'
-import { type Validation, type ValidationDto } from '@/presentation/controllers/protocols/Validation'
-import DomainError from '@/domain/account/error/DomainError'
+import { type Validation } from '@/presentation/controllers/protocols/Validation'
+import { created } from '@/presentation/helpers/http-helper'
+import { EmailError } from '@/domain/account/error/EmailError'
 
 export default class AddAccountController implements Controller {
   constructor (
@@ -16,26 +16,15 @@ export default class AddAccountController implements Controller {
   }
 
   async handle (request: AddAccountControllerDto.Input): Promise<HttpResponse> {
-    if (request.name) {
-      throw new Error('dasdas')
-    }
-    try {
-      const error: ValidationDto.Output | undefined = this.validation.validate(request)
-      if (error) {
-        return unprocessable(error)
-      }
-      const emailExisting: boolean = await this.checkAccountByEmail.execute(request.email)
-      if (emailExisting) {
-        return unprocessable({ email: 'The email already exists.' })
-      }
-      const output: AddAccountUseCaseDto.Output = await this.addAccountUseCase.execute(this.createFromRequest(request))
-      return created(output)
-    } catch (e) {
-      const error: Error = (e as Error)
-      if (error instanceof DomainError) {
-        return unprocessable(error.output())
-      }
-      return serverError(error)
+    this.validation.validate(request)
+    await this.checkEmail(request.email)
+    const output: AddAccountUseCaseDto.Output = await this.addAccountUseCase.execute(this.createFromRequest(request))
+    return created(output)
+  }
+
+  private async checkEmail (email: string): Promise<void> {
+    if (await this.checkAccountByEmail.execute(email)) {
+      throw EmailError.alreadyExists()
     }
   }
 

@@ -10,12 +10,9 @@ export class EmailValidation implements Validation {
   validate (input: ValidationDto.Input): ValidationDto.Output | undefined {
     const isValid: boolean = this.emailValidator.isValid(input[this.fieldName])
     if (!isValid) {
-      const message: string = `The ${this.fieldName} must be a valid email address.`
       return {
-        message,
-        errors: {
-          [this.fieldName]: message
-        }
+        detail: 'The must be a valid email address.',
+        pointer: this.fieldName
       }
     }
   }

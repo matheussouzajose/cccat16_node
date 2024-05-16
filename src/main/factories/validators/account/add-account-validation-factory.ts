@@ -10,5 +10,5 @@ export const makeAddAccountValidation = (): ValidationComposite => {
     validations.push(new RequiredFieldValidation(field))
   }
   validations.push(new EmailValidation('email', new EmailValidatorAdapter()))
-  return ValidationComposite.create(validations)
+  return new ValidationComposite(validations)
 }
