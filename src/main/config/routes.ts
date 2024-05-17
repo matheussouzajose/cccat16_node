@@ -1,5 +1,5 @@
-import type HttpServer from '@/infrastructure/http/protocols/HttpServer'
-import accountRoutes from '@/main/routes/account-routes'
+import type HttpServer from '@/infrastructure/http/protocols/HttpServer';
+import accountRoutes from '@/main/routes/account-routes';
 
 export default function (httpServer: HttpServer): void {
   // readdirSync(join(__dirname, '../routes')).map(async file => {
@@ -7,5 +7,5 @@ export default function (httpServer: HttpServer): void {
   //     (await import(`../routes/${file}`)).default(httpServer)
   //   }
   // })
-  accountRoutes(httpServer)
+  accountRoutes(httpServer);
 }

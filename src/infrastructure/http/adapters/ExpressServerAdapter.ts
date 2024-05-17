@@ -1,25 +1,35 @@
-import express, { Router } from 'express'
-import type HttpServer from '@/infrastructure/http/protocols/HttpServer'
+import express, { Router } from 'express';
+import type HttpServer from '@/infrastructure/http/protocols/HttpServer';
 
 export default class ExpressServerAdapter implements HttpServer {
-  app: any
+  app: any;
 
-  constructor () {
-    this.app = express()
+  constructor() {
+    this.app = express();
   }
 
-  listen (port: number): void {
-    this.app.listen(port, () => { console.log(`Server running at http://localhost:${port}`) })
+  listen(port: number): void {
+    this.app.listen(port, () => {
+      console.log(`Server running at http://localhost:${port}`);
+    });
   }
 
-  register (method: string, url: string, callback: Function, middlewares: Function[] = []): void {
-    const router: any = Router()
-    router[method](url, callback)
-    this.app.use(router)
+  register(
+    method: string,
+    url: string,
+    callback: Function,
+    middlewares: Function[] = [],
+  ): void {
+    const router: any = Router();
+    router[method](url, callback);
+    this.app.use(router);
+    middlewares.forEach((item) => {
+      console.log(item);
+    });
     // this.app[method](url, callback)
   }
 
-  addMiddleware (callback: Function): void {
-    this.app.use(callback)
+  addMiddleware(callback: Function): void {
+    this.app.use(callback);
   }
 }

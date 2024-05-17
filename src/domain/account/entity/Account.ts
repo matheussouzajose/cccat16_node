@@ -1,11 +1,11 @@
-import Uuid from '@/domain/shared/value-object/Uuid'
-import Name from '@/domain/account/value-object/Name'
-import Email from '@/domain/account/value-object/Email'
-import Cpf from '@/domain/account/value-object/Cpf'
-import CarPlate from '@/domain/account/value-object/CarPlate'
+import Uuid from '@/domain/shared/value-object/Uuid';
+import Name from '@/domain/account/value-object/Name';
+import Email from '@/domain/account/value-object/Email';
+import Cpf from '@/domain/account/value-object/Cpf';
+import CarPlate from '@/domain/account/value-object/CarPlate';
 
 export default class Account {
-  private constructor (
+  private constructor(
     readonly accountId: Uuid,
     private name: Name,
     private email: Email,
@@ -14,20 +14,19 @@ export default class Account {
     readonly isPassenger: boolean,
     readonly isDriver: boolean,
     readonly createdAt: Date,
-    private updatedAt: Date
-  ) {
-  }
+    private updatedAt: Date,
+  ) {}
 
-  static create (
+  static create(
     name: string,
     email: string,
     cpf: string,
     carPlate: string,
     isPassenger: boolean,
-    isDriver: boolean
+    isDriver: boolean,
   ): Account {
-    const accountId: Uuid = Uuid.random()
-    const createdAt: Date = new Date()
+    const accountId: Uuid = Uuid.random();
+    const createdAt: Date = new Date();
     return new Account(
       accountId,
       new Name(name),
@@ -37,11 +36,11 @@ export default class Account {
       isPassenger,
       isDriver,
       createdAt,
-      createdAt
-    )
+      createdAt,
+    );
   }
 
-  static restore (
+  static restore(
     accountId: string,
     name: string,
     email: string,
@@ -50,7 +49,7 @@ export default class Account {
     isPassenger: boolean,
     isDriver: boolean,
     createdAt: string,
-    updatedAt: string
+    updatedAt: string,
   ): Account {
     return new Account(
       new Uuid(accountId),
@@ -61,55 +60,55 @@ export default class Account {
       isPassenger,
       isDriver,
       new Date(createdAt),
-      new Date(updatedAt)
-    )
+      new Date(updatedAt),
+    );
   }
 
-  getAccountId (): string {
-    return this.accountId.value
+  getAccountId(): string {
+    return this.accountId.value;
   }
 
-  getName (): string {
-    return this.name.value
+  getName(): string {
+    return this.name.value;
   }
 
-  getEmail (): string {
-    return this.email.value
+  getEmail(): string {
+    return this.email.value;
   }
 
-  getCpf (): string {
-    return this.cpf.value
+  getCpf(): string {
+    return this.cpf.value;
   }
 
-  getCarPlate (): string {
-    return this.carPlate.value
+  getCarPlate(): string {
+    return this.carPlate.value;
   }
 
-  getCreatedAt (): Date {
-    return this.createdAt
+  getCreatedAt(): Date {
+    return this.createdAt;
   }
 
-  getUpdateAt (): Date {
-    return this.updatedAt
+  getUpdateAt(): Date {
+    return this.updatedAt;
   }
 
-  changeName (name: string): void {
-    this.name = new Name(name)
-    this.updatedAt = new Date()
+  changeName(name: string): void {
+    this.name = new Name(name);
+    this.updatedAt = new Date();
   }
 
-  changeEmail (email: string): void {
-    this.email = new Email(email)
-    this.updatedAt = new Date()
+  changeEmail(email: string): void {
+    this.email = new Email(email);
+    this.updatedAt = new Date();
   }
 
-  changeCpf (cpf: string): void {
-    this.cpf = new Cpf(cpf)
-    this.updatedAt = new Date()
+  changeCpf(cpf: string): void {
+    this.cpf = new Cpf(cpf);
+    this.updatedAt = new Date();
   }
 
-  changeCarPlate (carPlate: string): void {
-    this.carPlate = new CarPlate(carPlate)
-    this.updatedAt = new Date()
+  changeCarPlate(carPlate: string): void {
+    this.carPlate = new CarPlate(carPlate);
+    this.updatedAt = new Date();
   }
 }

@@ -1,3 +1,3 @@
 export interface UuidValidator {
-  isValid: (id: string) => boolean
+  isValid: (id: string) => boolean;
 }

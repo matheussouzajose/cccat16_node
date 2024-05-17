@@ -1,15 +1,15 @@
-import BaseError from '@/domain/shared/error/BaseError'
+import BaseError from '@/domain/shared/error/BaseError';
 
 export class NameError extends BaseError {
-  private constructor (detail: string, statusCode: number = 422) {
+  private constructor(detail: string, statusCode: number = 422) {
     super({
       title: 'Invalid Name.',
       statusCode,
-      detail
-    })
+      detail,
+    });
   }
 
-  static invalid (): NameError {
-    return new NameError('Must have first and last name')
+  static invalid(): NameError {
+    return new NameError('Must have first and last name');
   }
 }

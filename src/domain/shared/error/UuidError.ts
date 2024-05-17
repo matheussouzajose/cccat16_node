@@ -1,15 +1,15 @@
-import BaseError from '@/domain/shared/error/BaseError'
+import BaseError from '@/domain/shared/error/BaseError';
 
 export class UuidError extends BaseError {
-  private constructor (detail: string, statusCode: number = 422) {
+  private constructor(detail: string, statusCode: number = 422) {
     super({
       title: 'Invalid Uuid.',
       statusCode,
-      detail
-    })
+      detail,
+    });
   }
 
-  static invalid (value: string): UuidError {
-    return new UuidError(`The uuid ${value} is invalid.`)
+  static invalid(value: string): UuidError {
+    return new UuidError(`The uuid ${value} is invalid.`);
   }
 }

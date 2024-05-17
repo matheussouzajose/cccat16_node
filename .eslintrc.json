@@ -2,7 +2,19 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "extends": "love",
+//  "extends": "love",
+  "plugins": ["@typescript-eslint/eslint-plugin"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+//    "love"
+    "plugin:prettier/recommended"
+  ],
+  "root": true,
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "ignorePatterns": [".eslintrc.json"],
   "rules": {
     "@typescript-eslint/no-extraneous-class": "off",
     "@typescript-eslint/no-namespace": "off",
@@ -12,7 +24,8 @@
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "no-new": "off",
-    "@typescript-eslint/return-await": "off"
+    "@typescript-eslint/return-await": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
 

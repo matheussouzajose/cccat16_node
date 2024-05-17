@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1715963137676" clover="3.2.0">
+  <project timestamp="1715963137676" name="All files">
+    <metrics statements="163" coveredstatements="138" conditionals="28" coveredconditionals="18" methods="63" coveredmethods="55" elements="254" coveredelements="211" complexity="0" loc="163" ncloc="163" packages="8" files="16" classes="16"/>
+    <package name="application.usecase.account">
+      <metrics statements="16" coveredstatements="8" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="AddAccountUseCase.ts" path="/home/matheus/Branas/cccat_16_node/src/application/usecase/account/AddAccountUseCase.ts">
+        <metrics statements="11" coveredstatements="5" conditionals="5" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="GetAccountByIdUseCase.ts" path="/home/matheus/Branas/cccat_16_node/src/application/usecase/account/GetAccountByIdUseCase.ts">
+        <metrics statements="5" coveredstatements="3" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.account.entity">
+      <metrics statements="34" coveredstatements="34" conditionals="0" coveredconditionals="0" methods="14" coveredmethods="14"/>
+      <file name="Account.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/account/entity/Account.ts">
+        <metrics statements="34" coveredstatements="34" conditionals="0" coveredconditionals="0" methods="14" coveredmethods="14"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="55" count="3" type="stmt"/>
+        <line num="69" count="4" type="stmt"/>
+        <line num="73" count="5" type="stmt"/>
+        <line num="77" count="5" type="stmt"/>
+        <line num="81" count="5" type="stmt"/>
+        <line num="85" count="5" type="stmt"/>
+        <line num="89" count="4" type="stmt"/>
+        <line num="93" count="4" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
+        <line num="113" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.account.error">
+      <metrics statements="17" coveredstatements="16" conditionals="4" coveredconditionals="4" methods="9" coveredmethods="8"/>
+      <file name="CarPlateError.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/account/error/CarPlateError.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="CpfError.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/account/error/CpfError.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+      <file name="EmailError.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/account/error/EmailError.ts">
+        <metrics statements="5" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+      </file>
+      <file name="NameError.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/account/error/NameError.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.account.value-object">
+      <metrics statements="43" coveredstatements="43" conditionals="12" coveredconditionals="10" methods="15" coveredmethods="15"/>
+      <file name="CarPlate.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/account/value-object/CarPlate.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="12" count="8" type="cond" truecount="3" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+      <file name="Cpf.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/account/value-object/Cpf.ts">
+        <metrics statements="25" coveredstatements="25" conditionals="7" coveredconditionals="5" methods="9" coveredmethods="9"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="14" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="20" count="8" type="cond" truecount="0" falsecount="1"/>
+        <line num="21" count="8" type="stmt"/>
+        <line num="22" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="7" type="cond" truecount="0" falsecount="1"/>
+        <line num="24" count="7" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
+        <line num="38" count="7" type="stmt"/>
+        <line num="39" count="14" type="stmt"/>
+        <line num="43" count="14" type="stmt"/>
+        <line num="44" count="14" type="stmt"/>
+        <line num="45" count="154" type="cond" truecount="1" falsecount="0"/>
+        <line num="47" count="14" type="stmt"/>
+        <line num="48" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="7" type="stmt"/>
+      </file>
+      <file name="Email.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/account/value-object/Email.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="12" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+      <file name="Name.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/account/value-object/Name.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="12" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.shared.error">
+      <metrics statements="13" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="3"/>
+      <file name="BaseError.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/shared/error/BaseError.ts">
+        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="8" count="10" type="stmt"/>
+        <line num="9" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+      </file>
+      <file name="UuidError.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/shared/error/UuidError.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="3" count="5" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.shared.value-object">
+      <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="Uuid.ts" path="/home/matheus/Branas/cccat_16_node/src/domain/shared/value-object/Uuid.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="2" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="14" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.database">
+      <metrics statements="17" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="8" coveredmethods="3"/>
+      <file name="PgPromiseAdapter.ts" path="/home/matheus/Branas/cccat_16_node/src/infrastructure/database/PgPromiseAdapter.ts">
+        <metrics statements="17" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="8" coveredmethods="3"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="19" type="stmt"/>
+        <line num="7" count="19" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="39" count="16" type="cond" truecount="1" falsecount="0"/>
+        <line num="40" count="16" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.persistence.repository.account">
+      <metrics statements="14" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="5"/>
+      <file name="DbAccountRepository.ts" path="/home/matheus/Branas/cccat_16_node/src/infrastructure/persistence/repository/account/DbAccountRepository.ts">
+        <metrics statements="14" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="51" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="66" count="3" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

@@ -1,15 +1,15 @@
-import BaseError from '@/domain/shared/error/BaseError'
+import BaseError from '@/domain/shared/error/BaseError';
 
 export class CpfError extends BaseError {
-  private constructor (detail: string, statusCode: number = 422) {
+  private constructor(detail: string, statusCode: number = 422) {
     super({
       title: 'Invalid Cpf.',
       statusCode,
-      detail
-    })
+      detail,
+    });
   }
 
-  static invalid (value: string): CpfError {
-    return new CpfError(`The cpf ${value} is invalid.`)
+  static invalid(value: string): CpfError {
+    return new CpfError(`The cpf ${value} is invalid.`);
   }
 }

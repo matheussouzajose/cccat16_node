@@ -2,7 +2,7 @@
 module.exports = {
   roots: ['<rootDir>/tests'],
   collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts',
+    '<rootDir>/src/**/*.(t|j)s',
     '!<rootDir>/src/main/**'
   ],
   coverageDirectory: 'coverage',
@@ -10,11 +10,12 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   transform: {
-    '.+\\.ts$': 'ts-jest'
+    "^.+\\.(t|j)s$": "ts-jest"
   },
   moduleNameMapper: {
     '@/tests/(.*)': '<rootDir>/tests/$1',
     '@/(.*)': '<rootDir>/src/$1'
   },
+  moduleFileExtensions: ["js", "json", "ts"]
   // setupFilesAfterEnv: ['./tests/setup-db-testing.ts']
 };
