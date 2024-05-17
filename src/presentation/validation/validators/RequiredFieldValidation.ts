@@ -3,12 +3,12 @@ import { type Validation, type ValidationDto } from '@/presentation/controllers/
 export class RequiredFieldValidation implements Validation {
   constructor (private readonly fieldName: string) {}
 
-  validate (input: ValidationDto.Input): ValidationDto.Output | undefined {
+  validate (input: ValidationDto.Input): ValidationDto.Output[] | undefined {
     if (!input[this.fieldName]) {
-      return {
+      return [{
         detail: 'The field is required.',
         pointer: this.fieldName
-      }
+      }]
     }
   }
 }

@@ -1,5 +1,5 @@
 export interface Validation {
-  validate: (input: ValidationDto.Input) => ValidationDto.Output | undefined
+  validate: (input: ValidationDto.Input) => ValidationDto.Output[] | undefined
 }
 
 export namespace ValidationDto {

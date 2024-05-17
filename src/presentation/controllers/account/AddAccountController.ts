@@ -4,8 +4,7 @@ import type AddAccountUseCase from '@/application/usecase/account/AddAccountUseC
 import { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAccountUseCase'
 import type CheckAccountByEmailUseCase from '@/application/usecase/account/CheckAccountByEmailUseCase'
 import { type Validation } from '@/presentation/controllers/protocols/Validation'
-import { created } from '@/presentation/helpers/http-helper'
-import { EmailError } from '@/domain/account/error/EmailError'
+import { created, unprocessable, unprocessableRequest } from '@/presentation/helpers/http-helper'
 import LogControllerDecorator from '@/main/decorators/log-controller-decorator'
 
 @LogControllerDecorator
@@ -18,19 +17,18 @@ export default class AddAccountController implements Controller {
   }
 
   async handle (request: AddAccountControllerDto.Input): Promise<HttpResponse> {
-    this.validation.validate(request)
-    await this.checkEmail(request.email)
+    const errors = this.validation.validate(request)
+    if (errors) {
+      return unprocessableRequest(errors)
+    }
+    if (await this.checkAccountByEmail.execute(request.email)) {
+      return unprocessable({ title: 'Invalid Email.', detail: 'The email already exists.' })
+    }
     const output: AddAccountUseCaseDto.Output = await this.addAccountUseCase.execute(this.createFromRequest(request))
     return created(output)
   }
 
-  private async checkEmail (email: string): Promise<void> {
-    if (await this.checkAccountByEmail.execute(email)) {
-      throw EmailError.alreadyExists()
-    }
-  }
-
-  private createFromRequest (request: AddAccountControllerDto.Input): AddAccountUseCaseDto.Input {
+  private createFromRequest (request: any): AddAccountUseCaseDto.Input {
     return {
       name: request.name,
       email: request.email,
