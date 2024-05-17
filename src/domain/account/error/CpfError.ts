@@ -1,4 +1,4 @@
-import BaseError from '@/domain/shared/error/BaseError';
+import BaseError from '@/domain/shared/error/BaseError'
 
 export class CpfError extends BaseError {
   private constructor (detail: string, statusCode: number = 422) {
