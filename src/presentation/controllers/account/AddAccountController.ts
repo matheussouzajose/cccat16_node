@@ -2,15 +2,13 @@ import { type Controller } from '@/presentation/controllers/protocols/Controller
 import { type HttpResponse } from '@/presentation/controllers/protocols/HttpResponse'
 import type AddAccountUseCase from '@/application/usecase/account/AddAccountUseCase'
 import { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAccountUseCase'
-import type CheckAccountByEmailUseCase from '@/application/usecase/account/CheckAccountByEmailUseCase'
 import { type Validation } from '@/presentation/controllers/protocols/Validation'
-import { created, unprocessable, unprocessableRequest } from '@/presentation/helpers/http-helper'
+import { created, unprocessableRequest } from '@/presentation/helpers/http-helper'
 import LogControllerDecorator from '@/main/decorators/log-controller-decorator'
 
 @LogControllerDecorator
 export default class AddAccountController implements Controller {
   constructor (
-    private readonly checkAccountByEmail: CheckAccountByEmailUseCase,
     private readonly addAccountUseCase: AddAccountUseCase,
     private readonly validation: Validation
   ) {
@@ -20,9 +18,6 @@ export default class AddAccountController implements Controller {
     const errors = this.validation.validate(request)
     if (errors) {
       return unprocessableRequest(errors)
-    }
-    if (await this.checkAccountByEmail.execute(request.email)) {
-      return unprocessable({ title: 'Invalid Email.', detail: 'The email already exists.' })
     }
     const output: AddAccountUseCaseDto.Output = await this.addAccountUseCase.execute(this.createFromRequest(request))
     return created(output)

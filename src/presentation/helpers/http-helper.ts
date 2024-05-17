@@ -1,5 +1,5 @@
 import { type HttpResponse } from '@/presentation/controllers/protocols/HttpResponse'
-import {ValidationDto} from "@/presentation/controllers/protocols/Validation";
+import { type ValidationDto } from '@/presentation/controllers/protocols/Validation'
 
 export const ok = (data: any): HttpResponse => ({
   statusCode: 200,

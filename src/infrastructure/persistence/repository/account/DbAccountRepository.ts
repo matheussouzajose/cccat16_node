@@ -1,6 +1,7 @@
 import type AccountRepository from '@/domain/account/repository/AccountRepository'
 import Account from '@/domain/account/entity/Account'
 import type DatabaseConnection from '@/infrastructure/database/DatabaseConnection'
+import * as process from 'node:process'
 
 export default class DbAccountRepository implements AccountRepository {
   schema?: string
@@ -59,5 +60,10 @@ export default class DbAccountRepository implements AccountRepository {
       accountData.created_at,
       accountData.updated_at
     )
+  }
+
+  async checkAccountByEmail (email: string): Promise<boolean> {
+    const [accountData] = await this.connection.query(`select * from ${this.schema}.account where email = ($1)`, [email])
+    return !!accountData
   }
 }
