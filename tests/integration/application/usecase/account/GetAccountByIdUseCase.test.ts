@@ -5,8 +5,9 @@ import DbAccountRepository from '@/infrastructure/persistence/repository/account
 import AddAccountUseCase, { type AddAccountUseCaseDto } from '@/application/usecase/account/AddAccountUseCase'
 import MailerGatewayStub from '@/tests/stubs/MailerGatewayStub'
 import { mockAccountPassenger } from '@/tests/mocks/MockAccount'
+import { v4 } from 'uuid'
 
-describe('Get Account UseCase', () => {
+describe('Get Account By Id UseCase', () => {
   let getAccountUseCase: GetAccountByIdUseCase
   let addAccountUseCase: AddAccountUseCase
 
@@ -17,15 +18,16 @@ describe('Get Account UseCase', () => {
     addAccountUseCase = new AddAccountUseCase(accountRepository, new MailerGatewayStub())
   })
 
-  beforeEach(async (): Promise<void> => {
-    await connectDbTesting()
+  beforeEach(async (): Promise<void> => { await connectDbTesting() })
+
+  afterEach(async (): Promise<void> => { await disconnectDbTesting() })
+
+  test('Should return null when account no existing', async () => {
+    const output: GetAccountById.Output | null = await getAccountUseCase.execute(v4())
+    expect(output).toBeNull()
   })
 
-  afterEach(async (): Promise<void> => {
-    await disconnectDbTesting()
-  })
-
-  test('Should return account', async function (): Promise<void> {
+  test('Should return existing account', async function (): Promise<void> {
     const input: AddAccountUseCaseDto.Input = mockAccountPassenger()
     const { accountId } = await addAccountUseCase.execute(input)
     const output: GetAccountById.Output | null = await getAccountUseCase.execute(accountId)

@@ -11,7 +11,7 @@ export default abstract class BaseError extends Error {
     this.detail = input.detail
     this.type = input.type
     this.extensions = input.extensions
-    Error.captureStackTrace(this)
+    // Error.captureStackTrace(this)
   }
 
   static isBaseError (error: Error): boolean {

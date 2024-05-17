@@ -20,10 +20,17 @@ describe('Add Account UseCase', () => {
 
   afterEach(async (): Promise<void> => { await disconnectDbTesting() })
 
-  test('Should be create an passenger account', async () => {
+  test('Should create an passenger account', async () => {
     const input: AddAccountUseCaseDto.Input = mockAccountPassenger()
     const output: AddAccountUseCaseDto.Output = await addAccountUseCase.execute(input)
     expect(mailerGateway.recipient).toBe(input.email)
     expect(output.accountId).toBeDefined()
+  })
+
+  test('Should throws if email already exists', async () => {
+    const input: AddAccountUseCaseDto.Input = mockAccountPassenger()
+    await addAccountUseCase.execute(input)
+    const output = addAccountUseCase.execute(input)
+    await expect(output).rejects.toThrow()
   })
 })

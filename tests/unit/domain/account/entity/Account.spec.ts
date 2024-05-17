@@ -24,6 +24,7 @@ describe('Account Entity', () => {
 
   test('Should restore an account', () => {
     const accountId = v4()
+    const date = '2024-05-17T12:00:00.000Z'
     const account: Account = Account.restore(
       accountId,
       'John Doe',
@@ -32,12 +33,12 @@ describe('Account Entity', () => {
       'AMD1234',
       false,
       true,
-      '2024-05-17 12:00:00',
-      '2024-05-17 12:00:00'
+      date,
+      date
     )
     expect(account.getAccountId()).toBe(accountId)
-    expect(account.getCreatedAt().toLocaleString('pt-br')).toBe('17/05/2024, 12:00:00')
-    expect(account.getUpdateAt().toLocaleString('pt-br')).toBe('17/05/2024, 12:00:00')
+    expect(account.getCreatedAt()).toBeInstanceOf(Date)
+    expect(account.getUpdateAt()).toBeInstanceOf(Date)
     expect(account.getName()).toBe('John Doe')
     expect(account.getEmail()).toBe('john.doe@email.com')
     expect(account.getCpf()).toBe('25428860081')

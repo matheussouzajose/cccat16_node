@@ -16,8 +16,8 @@ export default class GetAccountByIdUseCase {
       carPlate: account.getCarPlate(),
       isPassenger: account.isPassenger,
       isDriver: account.isDriver,
-      createdAt: account.getCreatedAt(),
-      updatedAt: account.getUpdateAt()
+      createdAt: account.getCreatedAt().toLocaleString(),
+      updatedAt: account.getUpdateAt().toLocaleString()
     }
   }
 }
