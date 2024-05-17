@@ -6,7 +6,9 @@ import type CheckAccountByEmailUseCase from '@/application/usecase/account/Check
 import { type Validation } from '@/presentation/controllers/protocols/Validation'
 import { created } from '@/presentation/helpers/http-helper'
 import { EmailError } from '@/domain/account/error/EmailError'
+import LogControllerDecorator from '@/main/decorators/log-controller-decorator'
 
+@LogControllerDecorator
 export default class AddAccountController implements Controller {
   constructor (
     private readonly checkAccountByEmail: CheckAccountByEmailUseCase,

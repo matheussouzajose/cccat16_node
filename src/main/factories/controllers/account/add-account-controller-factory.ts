@@ -5,5 +5,7 @@ import { makeAddAccountUseCase } from '@/main/factories/usecases/account/add-acc
 import { makeAddAccountValidation } from '@/main/factories/validators/account/add-account-validation-factory'
 
 export const makeAddAccountController = (): Controller => {
+  // const controller = new AddAccountController(makeCheckAccountByEmailUseCase(), makeAddAccountUseCase(), makeAddAccountValidation())
+  // return new LogControllerDecorator(controller)
   return new AddAccountController(makeCheckAccountByEmailUseCase(), makeAddAccountUseCase(), makeAddAccountValidation())
 }
