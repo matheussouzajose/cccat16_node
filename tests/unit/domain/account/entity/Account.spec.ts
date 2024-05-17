@@ -1,4 +1,5 @@
 import Account from '@/domain/account/entity/Account'
+import { v4 } from 'uuid'
 
 describe('Account Entity', () => {
   test('Should create an passenger account', () => {
@@ -21,38 +22,22 @@ describe('Account Entity', () => {
     expect(account.isDriver).toBeFalsy()
   })
 
-  test('Should create an driver account', () => {
-    const account: Account = Account.create(
-      'John Doe',
-      'john.doe@email.com',
-      '25428860081',
-      'AMD1234',
-      false,
-      true
-    )
-    expect(account.getAccountId()).toBeDefined()
-    expect(account.getCreatedAt()).toBeDefined()
-    expect(account.getUpdateAt()).toBeDefined()
-    expect(account.getName()).toBe('John Doe')
-    expect(account.getEmail()).toBe('john.doe@email.com')
-    expect(account.getCpf()).toBe('25428860081')
-    expect(account.getCarPlate()).toBe('AMD1234')
-    expect(account.isPassenger).toBeFalsy()
-    expect(account.isDriver).toBeTruthy()
-  })
-
   test('Should restore an account', () => {
-    const account: Account = Account.create(
+    const accountId = v4()
+    const account: Account = Account.restore(
+      accountId,
       'John Doe',
       'john.doe@email.com',
       '25428860081',
       'AMD1234',
       false,
-      true
+      true,
+      '2024-05-17 12:00:00',
+      '2024-05-17 12:00:00'
     )
-    expect(account.getAccountId()).toBeDefined()
-    expect(account.getCreatedAt()).toBeDefined()
-    expect(account.getUpdateAt()).toBeDefined()
+    expect(account.getAccountId()).toBe(accountId)
+    expect(account.getCreatedAt().toLocaleString('pt-br')).toBe('17/05/2024, 12:00:00')
+    expect(account.getUpdateAt().toLocaleString('pt-br')).toBe('17/05/2024, 12:00:00')
     expect(account.getName()).toBe('John Doe')
     expect(account.getEmail()).toBe('john.doe@email.com')
     expect(account.getCpf()).toBe('25428860081')

@@ -4,8 +4,7 @@ import { CarPlateError } from '@/domain/account/error/CarPlateError'
 describe('CarPlate Value Object', () => {
   test('Should return new car plate', () => {
     const carPlate: CarPlate = new CarPlate('AMD1234')
-    expect(carPlate).toBeInstanceOf(CarPlate)
-    expect(carPlate.value).toBeDefined()
+    expect(carPlate.value).toBe('AMD1234')
   })
 
   test('Should throw if Cpf throws', async () => {

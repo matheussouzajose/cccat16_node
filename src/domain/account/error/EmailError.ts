@@ -16,11 +16,4 @@ export class EmailError extends BaseError {
   static alreadyExists (): EmailError {
     return new EmailError('The email already exists.')
   }
-
-  output (): any {
-    return {
-      title: this.message,
-      detail: this.detail
-    }
-  }
 }

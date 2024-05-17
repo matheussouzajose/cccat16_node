@@ -12,11 +12,4 @@ export class CpfError extends BaseError {
   static invalid (value: string): CpfError {
     return new CpfError(`The cpf ${value} is invalid.`)
   }
-
-  output (): any {
-    return {
-      title: this.message,
-      detail: this.detail
-    }
-  }
 }

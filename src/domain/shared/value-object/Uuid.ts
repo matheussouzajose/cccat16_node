@@ -9,15 +9,14 @@ export default class Uuid {
     this.value = value
   }
 
-  static random (): Uuid {
-    const uuid: string = valueV4()
-    return new Uuid(uuid)
-  }
-
   private ensureIsValid (value: string): void {
     const isValid: boolean = validate(value)
     if (!isValid) {
       throw UuidError.invalid(value)
     }
+  }
+
+  static random (): Uuid {
+    return new Uuid(valueV4())
   }
 }

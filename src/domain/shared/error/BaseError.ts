@@ -18,7 +18,12 @@ export default abstract class BaseError extends Error {
     return error instanceof BaseError
   }
 
-  abstract output (): any
+  output (): BaseDto.Output {
+    return {
+      title: this.message,
+      detail: this.detail
+    }
+  }
 }
 
 export namespace BaseDto {
@@ -29,4 +34,5 @@ export namespace BaseDto {
     type?: string
     extensions?: any
   }
+  export type Output = Omit<Input, 'statusCode'>
 }

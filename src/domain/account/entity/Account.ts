@@ -85,12 +85,12 @@ export default class Account {
     return this.carPlate.value
   }
 
-  getCreatedAt (): string {
-    return this.createdAt.toLocaleDateString()
+  getCreatedAt (): Date {
+    return this.createdAt
   }
 
-  getUpdateAt (): string {
-    return this.updatedAt.toLocaleDateString()
+  getUpdateAt (): Date {
+    return this.updatedAt
   }
 
   changeName (name: string): void {

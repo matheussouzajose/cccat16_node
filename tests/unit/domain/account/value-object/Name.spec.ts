@@ -9,6 +9,6 @@ describe('Name Value Object', () => {
   })
 
   test('Should throw if Name throws', async () => {
-    expect(() => new Name('John')).toThrow(NameError.invalid('John'))
+    expect(() => new Name('John')).toThrow(NameError.invalid())
   })
 })

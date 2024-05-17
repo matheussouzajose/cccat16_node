@@ -12,11 +12,4 @@ export class CarPlateError extends BaseError {
   static invalid (value: string): CarPlateError {
     return new CarPlateError(`The car plate ${value} is invalid.`)
   }
-
-  output (): any {
-    return {
-      title: this.message,
-      detail: this.detail
-    }
-  }
 }

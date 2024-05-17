@@ -12,11 +12,4 @@ export class NameError extends BaseError {
   static invalid (): NameError {
     return new NameError('Must have first and last name')
   }
-
-  output (): any {
-    return {
-      title: this.message,
-      detail: this.detail
-    }
-  }
 }

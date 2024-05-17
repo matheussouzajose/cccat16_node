@@ -1,7 +1,12 @@
-export class UuidError extends Error {
-  private constructor (message: string) {
-    super(message)
-    this.name = 'UuidError'
+import BaseError from '@/domain/shared/error/BaseError'
+
+export class UuidError extends BaseError {
+  private constructor (detail: string, statusCode: number = 422) {
+    super({
+      title: 'Invalid Uuid.',
+      statusCode,
+      detail
+    })
   }
 
   static invalid (value: string): UuidError {

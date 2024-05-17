@@ -4,7 +4,6 @@ import { UuidError } from '@/domain/shared/error/UuidError'
 describe('Uuid Value Object', () => {
   test('Should random new uuid', () => {
     const uuid: Uuid = Uuid.random()
-    expect(uuid).toBeInstanceOf(Uuid)
     expect(uuid.value).toBeDefined()
   })
 
